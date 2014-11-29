@@ -1,0 +1,32 @@
+#!/bin/bash
+
+remotename="$1"
+remoteurl="$2"
+
+blogging_remote=`git config --get devblog.blogging-remote`
+
+if [[ $blogging_remote != $remotename ]]; then
+    exit 0
+fi
+
+remotedir=${remoteurl##*:}
+remotehostname=${remoteurl%:*}
+blogging_branch=`git config --get devblog.blogging-branch`
+
+while read localref localcommit remoteref remotecommit; do
+    if [[ $localref == "refs/heads/$blogging_branch" && $remoteref == "refs/heads/$blogging_branch" ]]; then
+        if ! git rev-parse $localcommit^ >/dev/null 2>&1; then
+            tosync_config=`git config --get devblog.auto-sync-gitfiles`
+            for tosync in $tosync_config; do
+                scp -r .git/$tosync ${remoteurl}/
+                if [[ "$tosync" == "hooks" ]]; then
+                    ssh $remotehostname "cd $remotedir/hooks/ && rm -rf *.sample && chmod +x *"
+                fi
+            done
+            for propertyname in `git config --get devblog.auto-sync-gitconfigs`; do
+                propertyvalue=`git config --get $propertyname`
+                ssh $remotehostname "cd $remotedir; git config $propertyname $propertyvalue"
+            done
+        fi
+    fi
+done

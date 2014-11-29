@@ -1,0 +1,50 @@
+Roadmap
+======
+
+0.0.1
+-----
+Plan for initial commit:
+
+* configurability via config
+  * branches should be configurable
+* index locking when the commit slug is only "index" (do not generate a TOC)
+* a standard template
+* a way of adding static assets (at least style sheets first)
+* feed generation
+
+0.0.2
+-----
+* an "event-driven directory structure" for hooks, much more granular, more control
+* structuring data as toml before handing it over to plugins
+* the pipeline is in place
+* the blog is just one component of the pipeline and can be deactivated
+* Handling merges: blog only the merge commit, when commit into master, and only if there is something to blog.
+* Handling older versions of the same slug (same file on disk)
+
+0.0.3
+-----
+* A smooth handling of the pipeline
+* Allow referencing static assets from anywhere in the project (and copy them to the blogging branch)
+* Allow referencing code snippets (treeish:file:line-start[:+no-lines/lines-end])
+
+0.0.4
+-----
+* Add new plugins for the pipeline
+  * integrate diffs
+  * integrate changelog
+
+0.0.5
+-----
+* rewrite in rust
+* event-driven architecture
+* ways of grouping and categorising articles
+  * pave the road to more wiki-like sites
+
+0.0.6
+-----
+* plugin ecosystem, publishing, versioning, dependencies
+
+1.0.0
+-----
+* It should be smarter about locating identifiers in the actual code (and creating links as needed).
+

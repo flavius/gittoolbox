@@ -1,0 +1,15 @@
+#!/bin/bash
+
+blogging_branch=`git config --get devblog.blogging-branch`
+deploy_path=`git config --get devblog.remote-deploy-path`
+
+while read fromsha tosha refname; do
+    if [[ $refname == "refs/heads/${blogging_branch}" ]]; then
+        if [[ ${#deploy_path} -eq 0 ]]; then
+            echo "devblog.remote-deploy-path not set"
+            exit 1
+        fi
+        rm -rf ${deploy_path}/*
+        git --work-tree="${deploy_path}" --git-dir="$PWD" checkout -f "${blogging_branch}"
+    fi
+done

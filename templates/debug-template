@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "START HOOK $0"
+
+for arg in "$@"; do
+    echo "ARG: '$arg'"
+done
+
+while read line; do
+    echo "LINE: '$line'"
+done
+
+echo "----- ENV"
+printenv
+echo "-----"
+
+echo "END HOOK $0"
+echo "====="
+echo ""

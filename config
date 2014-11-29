@@ -1,0 +1,9 @@
+[devblog]
+    blog-title = you have no HEAD
+    blogging-branch=blog
+    blogging-remote=origin
+    auto-push=false
+    auto-sync-gitfiles=hooks
+    auto-sync-gitconfigs=devblog.remote-deploy-path devblog.blogging-branch
+    template-article = H4sIAPpceVQAA02POw7DIAyG95yCWl2rrB2Aq1QOuCUVj4iYIapy90KJqnix9D/8yfJik+FtIeE4eD3ItoTH+FJAEZpAaPUg6shAjMI4zCuxgsLP2x0Oi2f2pK8fk0KY+bGW6U2Gdzl249SPGEgBFnYpgzApMsV67V/tzt7QY2fLKdntOLHkE6XpFdG0Gu6pWvo98gU2/v4n2QAAAA==
+    template-index = H4sIAPaEeVQAA02OsQ7DIAxEd76CItYqawfgVyICbogEuEqdIUL8eyB0qBfr7sm+Uw+Pjs4P8EApGqb64tHmVQvIohtgvWG8jUpAlrtg9y+QFge9ny/xQ7RRBCPLEnGdb1HVNMy/22wTaGEPCrgL7jAT5PZJFocpbTQPUnvsNHLVgv40TBZCV5s7ZKN32wvR+z8HvgAAAA==
